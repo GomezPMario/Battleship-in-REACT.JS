@@ -1,0 +1,18 @@
+.Rejilla {
+    /* display: flex; */
+    flex-wrap: wrap;
+    margin-top: 2%;
+}
+  
+.FilasRejilla {
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid black; */
+}
+  
+.RejillaRectangulo {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
