@@ -1,13 +1,13 @@
 .Rejilla {
-    /* display: flex; */
+    display: flex;
     flex-wrap: wrap;
     margin-top: 2%;
 }
   
 .FilasRejilla {
     display: flex;
-    justify-content: center;
-    /* border: 1px solid black; */
+    width: 100%;
+        /* border: 1px solid black; */
 }
   
 .RejillaRectangulo {
@@ -15,4 +15,18 @@
     height: 50px;
     border: 1px solid black;
     box-sizing: border-box;
+    background-color: #f1f1f1;
+}
+
+/* Llamamaos a la className RejillaRectangulo barco */
+.barco {
+    background-color: #000000;
+}
+
+.BarcoCompletoSeleccionado{
+    background-color: red;
+}
+
+.seleccionado{
+    background-color: #00ff00;
 }
