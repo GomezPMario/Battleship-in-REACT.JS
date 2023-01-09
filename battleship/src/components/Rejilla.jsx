@@ -167,66 +167,66 @@ const Rejilla = (props) => {
     }
 
     // Colocamos 2 barcos con dimension 3x1; 1 barco con dimension 4x1; y 1 barco con dimension 5x1
-    let row = Math.floor(Math.random() * height);
-    let col = Math.floor(Math.random() * width);
-    let orientation = checkOrientation(orientation1, 3, row, col);
-    if (checkSpace(orientation, 3, row, col)) {
-        if (orientation === 'horizontal') {
-            for (let i = 0; i < 3; i++) {
-                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco"></div>;
-            }
-        } else {
-            for (let i = 0; i < 3; i++) {
-                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} className="RejillaRectangulo barco"></div>;
-            }
-        }
-    }
+    // let row = Math.floor(Math.random() * height);
+    // let col = Math.floor(Math.random() * width);
+    // let orientation = checkOrientation(orientation1, 3, row, col);
+    // if (checkSpace(orientation, 3, row, col)) {
+    //     if (orientation === 'horizontal') {
+    //         for (let i = 0; i < 3; i++) {
+    //             grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco"></div>;
+    //         }
+    //     } else {
+    //         for (let i = 0; i < 3; i++) {
+    //             grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} className="RejillaRectangulo barco"></div>;
+    //         }
+    //     }
+    // }
 
-    row = Math.floor(Math.random() * height);
-    col = Math.floor(Math.random() * width);
-    orientation = checkOrientation(orientation2, 3, row, col);
-    if (checkSpace(orientation, 3, row, col)) {
-        if (orientation === 'horizontal') {
-            for (let i = 0; i < 3; i++) {
-                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco"></div>;
-            }
-        } else {
-            for (let i = 0; i < 3; i++) {
-                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} className="RejillaRectangulo barco"></div>;
-            }
-        }
-    }
+    // row = Math.floor(Math.random() * height);
+    // col = Math.floor(Math.random() * width);
+    // orientation = checkOrientation(orientation2, 3, row, col);
+    // if (checkSpace(orientation, 3, row, col)) {
+    //     if (orientation === 'horizontal') {
+    //         for (let i = 0; i < 3; i++) {
+    //             grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco"></div>;
+    //         }
+    //     } else {
+    //         for (let i = 0; i < 3; i++) {
+    //             grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} className="RejillaRectangulo barco"></div>;
+    //         }
+    //     }
+    // }
 
-    row = Math.floor(Math.random() * height);
-    col = Math.floor(Math.random() * width);
-    orientation = checkOrientation(orientation3, 4, row, col);
-    if (checkSpace(orientation, 4, row, col)) {
-        if (orientation === 'horizontal') {
-            for (let i = 0; i < 4; i++) {
-                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco" ></div >;
-            }
-        } else {
-            for (let i = 0; i < 4; i++) {
-                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} className="RejillaRectangulo barco" ></div >;
-            }
-        }
-    }
+    // row = Math.floor(Math.random() * height);
+    // col = Math.floor(Math.random() * width);
+    // orientation = checkOrientation(orientation3, 4, row, col);
+    // if (checkSpace(orientation, 4, row, col)) {
+    //     if (orientation === 'horizontal') {
+    //         for (let i = 0; i < 4; i++) {
+    //             grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco" ></div >;
+    //         }
+    //     } else {
+    //         for (let i = 0; i < 4; i++) {
+    //             grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} className="RejillaRectangulo barco" ></div >;
+    //         }
+    //     }
+    // }
 
-    row = Math.floor(Math.random() * height);
-    col = Math.floor(Math.random() * width);
-    orientation = checkOrientation(orientation3, 5, row, col);
-    if (checkSpace(orientation, 5, row, col)) {
-        if (orientation === 'horizontal') {
-            for (let i = 0; i < 5; i++) {
-                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco" ></div >;
-            }
-        } else {
-            for (let i = 0; i < 5; i++) {
-                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} className="RejillaRectangulo barco" ></div >;
-            }
-        }
-    }
-    return grid;
+    // row = Math.floor(Math.random() * height);
+    // col = Math.floor(Math.random() * width);
+    // orientation = checkOrientation(orientation3, 5, row, col);
+    // if (checkSpace(orientation, 5, row, col)) {
+    //     if (orientation === 'horizontal') {
+    //         for (let i = 0; i < 5; i++) {
+    //             grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco" ></div >;
+    //         }
+    //     } else {
+    //         for (let i = 0; i < 5; i++) {
+    //             grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} className="RejillaRectangulo barco" ></div >;
+    //         }
+    //     }
+    // }
+    // return grid;
 
     // Entre barco y barco, tiene que haber una separación
     // const checkSpace = (orientation, length, row, col) => {
@@ -287,8 +287,6 @@ const Rejilla = (props) => {
                     </div>
                 );
             })}
-            <button onClick={clickHandler}>Play</button>
-
         </div>
     );
 }
