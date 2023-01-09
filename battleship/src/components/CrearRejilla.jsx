@@ -9,7 +9,8 @@ const CrearRejilla = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setGrid(<Rejilla width={width} height={height} />);
+        // setGrid(<Rejilla width={width} height={height} />);
+        setGrid(Rejilla({width, height}));
     }
 
     return (
