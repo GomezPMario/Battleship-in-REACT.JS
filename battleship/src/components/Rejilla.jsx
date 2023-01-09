@@ -66,89 +66,68 @@ const Rejilla = (props) => {
     const checkSpace = (orientation, length, row, col) => {
         if (orientation === 'horizontal') {
             for (let i = 0; i < length; i++) {
-
                 if (grid[row].props.children[col + i].props.className === 'RejillaRectangulo barco') {
                     return false;
                 }
-
-
                 if (row - 1 >= 0) {
                     if (grid[row - 1].props.children[col + i].props.className === 'RejillaRectangulo barco') {
                         return false;
                     }
-
                     if (col + i - 1 >= 0) {
                         if (grid[row - 1].props.children[col + i - 1].props.className === 'RejillaRectangulo barco') {
                             return false;
                         }
-
-
                     }
                     if (col + i + 1 < width) {
                         if (grid[row - 1].props.children[col + i + 1].props.className === 'RejillaRectangulo barco') {
                             return false;
-
                         }
                     }
                 }
-
                 if (row + 1 < height) {
                     if (grid[row + 1].props.children[col + i].props.className === 'RejillaRectangulo barco') {
                         return false;
                     }
-
                     if (col + i - 1 >= 0) {
                         if (grid[row + 1].props.children[col + i - 1].props.className === 'RejillaRectangulo barco') {
                             return false;
                         }
                     }
-
-
                     if (col + i + 1 < width) {
                         if (grid[row + 1].props.children[col + i + 1].props.className === 'RejillaRectangulo barco') {
                             return false;
                         }
                     }
-
                 }
 
                 if (col + i - 1 >= 0) {
                     if (grid[row].props.children[col + i - 1].props.className === 'RejillaRectangulo barco') {
                         return false;
                     }
-
                 }
 
                 if (col + i + 1 < width) {
                     if (grid[row].props.children[col + i + 1].props.className === 'RejillaRectangulo barco') {
-
                         return false;
                     }
                 }
             }
 
         } else {
-
             for (let i = 0; i < length; i++) {
-
                 if (grid[row + i].props.children[col].props.className === 'RejillaRectangulo barco') {
                     return false;
                 }
-
                 if (col - 1 >= 0) {
                     if (grid[row + i].props.children[col - 1].props.className === 'RejillaRectangulo barco') {
                         return false;
                     }
-
                     if (row + i - 1 >= 0) {
                         if (grid[row + i - 1].props.children[col - 1].props.className === 'RejillaRectangulo barco') {
-
                             return false;
                         }
                     }
-
                     if (row + i + 1 < height) {
-
                         if (grid[row + i + 1].props.children[col - 1].props.className === 'RejillaRectangulo barco') {
                             return false;
                         }
@@ -157,12 +136,10 @@ const Rejilla = (props) => {
 
                 if (col + 1 < width) {
                     if (grid[row + i].props.children[col + 1].props.className === 'RejillaRectangulo barco') {
-
                         return false;
                     }
 
                     if (row + i - 1 >= 0) {
-
                         if (grid[row + i - 1].props.children[col + 1].props.className === 'RejillaRectangulo barco') {
                             return false;
                         }
@@ -174,29 +151,21 @@ const Rejilla = (props) => {
                         }
                     }
                 }
-
                 if (row + i - 1 >= 0) {
                     if (grid[row + i - 1].props.children[col].props.className === 'RejillaRectangulo barco') {
                         return false;
                     }
                 }
-
                 if (row + i + 1 < height) {
                     if (grid[row + i + 1].props.children[col].props.className === 'RejillaRectangulo barco') {
-
                         return false;
                     }
                 }
             }
         }
-
         return true;
     }
-
-
-
-            
-
+    
     // Colocamos 2 barcos con dimension 3x1; 1 barco con dimension 4x1; y 1 barco con dimension 5x1
     let row = Math.floor(Math.random() * height);
     let col = Math.floor(Math.random() * width);
