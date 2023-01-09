@@ -165,7 +165,7 @@ const Rejilla = (props) => {
         }
         return true;
     }
-    
+
     // Colocamos 2 barcos con dimension 3x1; 1 barco con dimension 4x1; y 1 barco con dimension 5x1
     let row = Math.floor(Math.random() * height);
     let col = Math.floor(Math.random() * width);
@@ -214,10 +214,10 @@ const Rejilla = (props) => {
 
     row = Math.floor(Math.random() * height);
     col = Math.floor(Math.random() * width);
-    orientation = checkOrientation(orientation3, 4, row, col);
+    orientation = checkOrientation(orientation3, 5, row, col);
     if (checkSpace(orientation, 5, row, col)) {
         if (orientation === 'horizontal') {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 5; i++) {
                 grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco" ></div >;
             }
         } else {
