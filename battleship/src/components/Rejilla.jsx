@@ -26,10 +26,10 @@ const Rejilla = (props) => {
 
 
     // Generamos aleatoriamente la orientación de cada barco
-    const orientation1 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-    const orientation2 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-    const orientation3 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-    const orientation4 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+    const orientation = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+    // const orientation2 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+    // const orientation3 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+    // const orientation4 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
 
     // Comprobamos que la orientación de cada barco no se sale de la rejilla
     const checkOrientation = (orientation, length, row, col) => {
@@ -44,23 +44,6 @@ const Rejilla = (props) => {
         }
         return orientation;
     }
-
-    // const checkSpace = (orientation, length, row, col) => {
-    //     if (orientation === 'horizontal') {
-    //         for (let i = 0; i < length; i++) {
-    //             if (grid[row].props.children[col + i].props.className === 'RejillaRectangulo barco') {
-    //                 return false;
-    //             }
-    //         }
-    //     } else {
-    //         for (let i = 0; i < length; i++) {
-    //             if (grid[row + i].props.children[col].props.className === 'RejillaRectangulo barco') {
-    //                 return false;
-    //             }
-    //         }
-    //     }
-    //     return true;
-    // }
 
     // Comprobamos si hay espacio suficiente en la rejilla para colocar el barco y además entre barco y barco tiene que haber una separación de una casilla
     const checkSpace = (orientation, length, row, col) => {
@@ -112,7 +95,6 @@ const Rejilla = (props) => {
                     }
                 }
             }
-
         } else {
             for (let i = 0; i < length; i++) {
                 if (grid[row + i].props.children[col].props.className === 'RejillaRectangulo barco') {
@@ -133,18 +115,15 @@ const Rejilla = (props) => {
                         }
                     }
                 }
-
                 if (col + 1 < width) {
                     if (grid[row + i].props.children[col + 1].props.className === 'RejillaRectangulo barco') {
                         return false;
                     }
-
                     if (row + i - 1 >= 0) {
                         if (grid[row + i - 1].props.children[col + 1].props.className === 'RejillaRectangulo barco') {
                             return false;
                         }
                     }
-
                     if (row + i + 1 < height) {
                         if (grid[row + i + 1].props.children[col + 1].props.className === 'RejillaRectangulo barco') {
                             return false;
@@ -166,7 +145,7 @@ const Rejilla = (props) => {
         return true;
     }
 
-    // Colocamos 2 barcos con dimension 3x1; 1 barco con dimension 4x1; y 1 barco con dimension 5x1
+    // // Colocamos 2 barcos con dimension 3x1; 1 barco con dimension 4x1; y 1 barco con dimension 5x1
     // let row = Math.floor(Math.random() * height);
     // let col = Math.floor(Math.random() * width);
     // let orientation = checkOrientation(orientation1, 3, row, col);
@@ -287,6 +266,7 @@ const Rejilla = (props) => {
                     </div>
                 );
             })}
+
         </div>
     );
 }
