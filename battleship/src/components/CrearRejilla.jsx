@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Rejilla from './Rejilla';
 
-
 const CrearRejilla = () => {
     const [height, setHeight] = useState(5);
     const [width, setWidth] = useState(5);
@@ -9,13 +8,22 @@ const CrearRejilla = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // setGrid(<Rejilla width={width} height={height} />);
-        setGrid(Rejilla({width, height}));
+        setGrid(<Rejilla width={width} height={height} />);
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
+                <label htmlFor="widht">Anchura:</label>
+                <input
+                    type="number"
+                    id="widht"
+                    name="widht"
+                    min={5}
+                    value={width}
+                    onChange={(event) => setWidth(event.target.value)}
+                />
+                <br />
                 <label htmlFor="height">Altura:</label>
                 <input
                     type="number"
@@ -24,16 +32,6 @@ const CrearRejilla = () => {
                     min={5}
                     value={height}
                     onChange={(event) => setHeight(event.target.value)}
-                />
-                <br />
-                <label htmlFor="width">Anchura:</label>
-                <input
-                    type="number"
-                    id="width"
-                    name="width"
-                    min={5}
-                    value={width}
-                    onChange={(event) => setWidth(event.target.value)}
                 />
                 <br />
                 <button type="submit">Crear cuadrícula</button>

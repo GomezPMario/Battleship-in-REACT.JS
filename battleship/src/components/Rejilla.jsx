@@ -23,13 +23,11 @@ const Rejilla = (props) => {
         grid.push(<div key={row} className="FilasRejilla">{currentRow}</div>);
     }
 
-
-
     // Generamos aleatoriamente la orientación de cada barco
-    const orientation = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-    // const orientation2 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-    // const orientation3 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-    // const orientation4 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+    const orientation1 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+    const orientation2 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+    const orientation3 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+    const orientation4 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
 
     // Comprobamos que la orientación de cada barco no se sale de la rejilla
     const checkOrientation = (orientation, length, row, col) => {
@@ -259,14 +257,7 @@ const Rejilla = (props) => {
 
     return (
         <div className="Rejilla">
-            {grid.map((row, index) => {
-                return (
-                    <div key={index} className="RejillaFila">
-                        {row.props.children}
-                    </div>
-                );
-            })}
-
+            {grid}
         </div>
     );
 }
