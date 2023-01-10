@@ -141,6 +141,31 @@ const Rejilla = (props) => {
             }
         }
     }
+
+
+    
+
+    // const ships = [{ size: 3, count: 2 }, { size: 4, count: 1 }, { size: 5, count: 1 }];
+
+    // ships.forEach(ship => {
+    //     for (let i = 0; i < ship.count; i++) {
+    //         let row, col, orientation;
+    //         do {
+    //             row = Math.floor(Math.random() * height);
+    //             col = Math.floor(Math.random() * width);
+    //             orientation = checkOrientation(shipOrientation, ship.size, row, col);
+    //         } while (!checkSpace(orientation, ship.size, row, col));
+
+    //         for (let j = 0; j < ship.size; j++) {
+    //             if (orientation === 'horizontal') {
+    //                 grid[row].props.children[col + j] = <div key={`${row}-${col + j}`} className="RejillaRectangulo barco"></div>;
+    //             } else {
+    //                 grid[row + j].props.children[col] = <div key={`${row + j}-${col}`} className="RejillaRectangulo barco"></div>;
+    //             }
+    //         }
+    //     }
+    // });
+
     // return grid;
 
     // Entre barco y barco, tiene que haber una separación
