@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles/Rejilla.css';
 
+const [grid, setGrid] = useState(initialGrid);
 let contador = 0;
 
 const Rejilla = (props) => {
@@ -149,68 +150,24 @@ const Rejilla = (props) => {
             }
         }
     }
-    
-    // Si el usuario clica sobre una porcion del barco, esa casilla se pone en color verde.
-    // Si el usuario completa un barco, los colores de esas casillas se ponen en color rojo.
-    // Si el usuario clica sobre una casilla vacia, esa casilla se pone en color azul.
-    // const clickHandler = (e) => {
-    //     if (e.target.className === 'RejillaRectangulo barco') {
-    //         e.target.className = 'RejillaRectangulo BarcoSeleccionado';
-    //         contador++;
-    //     } else if (e.target.className === 'RejillaRectangulo BarcoSeleccionado') {
-    //         e.target.className = 'RejillaRectangulo barco';
-    //         contador--;
-    //     } else if (e.target.className === 'RejillaRectangulo BarcoCompleto') {
-    //         e.target.className = 'RejillaRectangulo BarcoCompletoSeleccionado';
-    //         contador++;
-    //     } else if (e.target.className === 'RejillaRectangulo BarcoCompletoSeleccionado') {
-    //         e.target.className = 'RejillaRectangulo BarcoCompleto';
-    //         contador--;
-    //     } else if (e.target.className === 'RejillaRectangulo') {
-    //         e.target.className = 'RejillaRectangulo seleccionado';
-    //         contador++;
-    //     } else if (e.target.className === 'RejillaRectangulo seleccionado') {
-    //         e.target.className = 'RejillaRectangulo';
-    //         contador--;
-    //     }
-    //     if (contador > (width * height) / 2) {
-    //         alert('No puedes seleccionar mas casillas');
-    //         contador--;
-    //     }
-    // }
 
     const checkCell = (row, col) => {
         if (contador < 1) {
             alert('No puede seleccionar mas casillas');
         }else{
-            // if (grid[row].props.children[col].props.className === 'RejillaRectangulo barco') {
-            //     grid[row].props.children[col] = <div key={`${row}-${col}`} className="RejillaRectangulo BarcoSeleccionado"></div>;
-            //     contador++;
-            // } else if (grid[row].props.children[col].props.className === 'RejillaRectangulo BarcoSeleccionado') {
-            //     grid[row].props.children[col] = <div key={`${row}-${col}`} className="RejillaRectangulo barco"></div>;
-            //     contador--;
-            // } else if (grid[row].props.children[col].props.className === 'RejillaRectangulo BarcoCompleto') {
-            //     grid[row].props.children[col] = <div key={`${row}-${col}`} className="RejillaRectangulo BarcoCompletoSeleccionado"></div>;
-            //     contador++;
-            // } else if (grid[row].props.children[col].props.className === 'RejillaRectangulo BarcoCompletoSeleccionado') {
-            //     grid[row].props.children[col] = <div key={`${row}-${col}`} className="RejillaRectangulo BarcoCompleto"></div>;
-            //     contador--;
-            // } else if (grid[row].props.children[col].props.className === 'RejillaRectangulo') {
-            //     grid[row].props.children[col] = <div key={`${row}-${col}`} className="RejillaRectangulo seleccionado"></div>;
-            //     contador--;
-            // } else if (grid[row].props.children[col].props.className === 'RejillaRectangulo seleccionado') {
-            //     grid[row].props.children[col] = <div key={`${row}-${col}`} className="RejillaRectangulo"></div>;
-            //     contador--;
-            // }
+            // Hacemos una copia de la rejilla
+            let newGrid = [...grid];
+
             if (grid[row].props.children[col].props.className === 'RejillaRectangulo') {
-                grid[row].props.children[col] = <div key={`${row}-${col}`} className="seleccionado"></div>;
+                newGrid[row].props.children[col] = <div key={`${row}-${col}`} className="seleccionado"></div>;
                 contador--;
                 document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
             }else if (grid[row].props.children[col].props.className === 'barco'){
-                grid[row].props.children[col] = <div key={`${row}-${col}`} className="barco"></div>;
+                newGrid[row].props.children[col] = <div key={`${row}-${col}`} className="barco"></div>;
                 contador--;
                 document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
             }
+            setGrid(newGrid);
         }
     }
 
