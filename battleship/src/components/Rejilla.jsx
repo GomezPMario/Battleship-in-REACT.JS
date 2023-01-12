@@ -1,7 +1,6 @@
 import React from 'react';
 import './styles/Rejilla.css';
 
-const [grid, setGrid] = useState(initialGrid);
 let contador = 0;
 
 const Rejilla = (props) => {
@@ -26,16 +25,13 @@ const Rejilla = (props) => {
     for (let row = 0; row < height; row++) {
         let currentRow = [];
         for (let col = 0; col < width; col++) {
-            currentRow.push(<div key={`${row}-${col}`} className="RejillaRectangulo" onClick={() => checkCell(row, col)}></div>);
+            currentRow.push(<div key={`${row}-${col}`} id={`cell-${row}-${col}`} className="RejillaRectangulo" onClick={() => checkCell(row, col)}></div>);
         }
         grid.push(<div key={row} className="FilasRejilla">{currentRow}</div>);
     }
 
     // Generamos aleatoriamente la orientación de cada barco
     const shipOrientation = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-    // const orientation2 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-    // const orientation3 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-    // const orientation4 = Math.random() < 0.5 ? 'horizontal' : 'vertical';
 
     // Comprobamos que la orientación de cada barco no se sale de la rejilla
     const checkOrientation = (orientation, length, row, col) => {
@@ -93,15 +89,14 @@ const Rejilla = (props) => {
     let row = Math.floor(Math.random() * height);
     let col = Math.floor(Math.random() * width);
     let orientation = checkOrientation(shipOrientation, 5, row, col);
-
     if (checkSpace(orientation, 5, row, col)) {
         if (orientation === 'horizontal') {
             for (let i = 0; i < 5; i++) {
-                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco"></div>;
+                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} id={`cell-${row}-${col + i}`} className="RejillaRectangulo barco" onClick={() => checkCell(row, col + i)}></div>;
             }
         } else {
             for (let i = 0; i < 5; i++) {
-                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} className="RejillaRectangulo barco"></div>;
+                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} id={`cell-${row + i}-${col}`} className="RejillaRectangulo barco" onClick={() => checkCell(row + i, col)}></div>;
             }
         }
     }
@@ -112,11 +107,11 @@ const Rejilla = (props) => {
     if (checkSpace(orientation, 4, row, col)) {
         if (orientation === 'horizontal') {
             for (let i = 0; i < 4; i++) {
-                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco"></div>;
+                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} id={`cell-${row}-${col + i}`} className="RejillaRectangulo barco" onClick={() => checkCell(row, col + i)}></div>;
             }
         } else {
             for (let i = 0; i < 4; i++) {
-                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} className="RejillaRectangulo barco"></div>;
+                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} id={`cell-${row + i}-${col}`} className="RejillaRectangulo barco" onClick={() => checkCell(row + i, col)}></div>;
             }
         }
     }
@@ -127,11 +122,11 @@ const Rejilla = (props) => {
     if (checkSpace(orientation, 3, row, col)) {
         if (orientation === 'horizontal') {
             for (let i = 0; i < 3; i++) {
-                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco" ></div >;
+                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} id={`cell-${row}-${col + i}`} className="RejillaRectangulo barco" onClick={() => checkCell(row, col + i)}></div >;
             }
         } else {
             for (let i = 0; i < 3; i++) {
-                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} className="RejillaRectangulo barco" ></div >;
+                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} id={`cell-${row + i}-${col}`} className="RejillaRectangulo barco" onClick={() => checkCell(row + i, col)}></div >;
             }
         }
     }
@@ -142,32 +137,31 @@ const Rejilla = (props) => {
     if (checkSpace(orientation, 3, row, col)) {
         if (orientation === 'horizontal') {
             for (let i = 0; i < 3; i++) {
-                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} className="RejillaRectangulo barco" ></div >;
+                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} id={`cell-${row}-${col + i}`} className="RejillaRectangulo barco" onClick={() => checkCell(row, col + i)}></div >;
             }
         } else {
             for (let i = 0; i < 3; i++) {
-                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} className="RejillaRectangulo barco" ></div >;
+                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} id={`cell-${row + i}-${col}`} className="RejillaRectangulo barco" onClick={() => checkCell(row + i, col)}></div >;
             }
         }
     }
-
+    
     const checkCell = (row, col) => {
         if (contador < 1) {
             alert('No puede seleccionar mas casillas');
         }else{
-            // Hacemos una copia de la rejilla
-            let newGrid = [...grid];
-
+            alert(row);
+            alert(col);
             if (grid[row].props.children[col].props.className === 'RejillaRectangulo') {
-                newGrid[row].props.children[col] = <div key={`${row}-${col}`} className="seleccionado"></div>;
+                document.getElementById('cell-' + row + "-" + col).classList.add("agua");
                 contador--;
                 document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
-            }else if (grid[row].props.children[col].props.className === 'barco'){
-                newGrid[row].props.children[col] = <div key={`${row}-${col}`} className="barco"></div>;
+            }else if (grid[row].props.children[col].props.className === 'RejillaRectangulo barco'){
+                document.getElementById('cell-' + row + "-" + col).classList.remove("barco");
+                document.getElementById('cell-' + row + "-" + col).classList.add("seleccionado");
                 contador--;
                 document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
             }
-            setGrid(newGrid);
         }
     }
 
