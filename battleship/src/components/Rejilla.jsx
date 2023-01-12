@@ -16,7 +16,7 @@ const Rejilla = (props) => {
 
     contador = ((height * width) / 2).toFixed();
     let contadortext = 'Le quedan ' + contador + ' intentos';
-    if(document.getElementById('mostrarContador')){
+    if (document.getElementById('mostrarContador')) {
         document.getElementById('mostrarContador').innerHTML = contadortext;
     }
 
@@ -55,10 +55,10 @@ const Rejilla = (props) => {
             if (col + length > width) {
                 flag = false;
             }
-            else{
-                for (let i = -1; i < length+1; i++) {
-                    for(let j = -1; j <=1; j++) {
-                        if (row + j >= 0 && row + j < height && col + i >= 0 && col + i < width ) {
+            else {
+                for (let i = -1; i < length + 1; i++) {
+                    for (let j = -1; j <= 1; j++) {
+                        if (row + j >= 0 && row + j < height && col + i >= 0 && col + i < width) {
                             if (grid[row + j].props.children[col + i].props.className === 'RejillaRectangulo barco') {
                                 flag = false;
                             }
@@ -66,15 +66,15 @@ const Rejilla = (props) => {
                     }
                 }
             }
-        } 
+        }
         else {
             if (row + length > height) {
                 flag = false;
             }
-            else{
-                for (let i = -1; i < length+1; i++) {
-                    for(let j = -1; j <=1; j++) {
-                        if (row + i >= 0 && row + i < height && col + j >= 0 && col + j < width ) {
+            else {
+                for (let i = -1; i < length + 1; i++) {
+                    for (let j = -1; j <= 1; j++) {
+                        if (row + i >= 0 && row + i < height && col + j >= 0 && col + j < width) {
                             if (grid[row + i].props.children[col + j].props.className === 'RejillaRectangulo barco') {
                                 flag = false;
                             }
@@ -146,7 +146,7 @@ const Rejilla = (props) => {
             }
         }
     }
-    
+
     const checkCell = (e) => {
         let id = e.target.id;
         let coordinates = id.split("-");
@@ -154,19 +154,46 @@ const Rejilla = (props) => {
         let col = coordinates[2];
         if (contador < 1) {
             alert('No puede seleccionar mas casillas');
-        }else{
-            alert(row);
-            alert(col);
+        } else {
             if (grid[row].props.children[col].props.className === 'RejillaRectangulo') {
                 document.getElementById('cell-' + row + "-" + col).classList.add("agua");
                 contador--;
                 document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
-            }else if(grid[row].props.children[col].props.className === 'RejillaRectangulo barco'){
+            } else if (grid[row].props.children[col].props.className === 'RejillaRectangulo barco') {
                 document.getElementById('cell-' + row + "-" + col).classList.remove("barco");
                 document.getElementById('cell-' + row + "-" + col).classList.add("seleccionado");
                 contador--;
                 document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
+                // let shipId = grid[row].props.children[col].props.shipId;
+                // let newShipHits = {...shipHits};
+                // if(!newShipHits[shipId]) newShipHits[shipId] = 1;
+                // else newShipHits[shipId]++;
+                // setShipHits(newShipHits);
+                // document.getElementById('cell-' + row + "-" + col).classList.remove("barco");
+                // document.getElementById('cell-' + row + "-" + col).classList.add("seleccionado");
+                // contador--;
+                // document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
+                // if(newShipHits[shipId] === shipLengths[shipId]){
+                //     document.getElementById('cell-' + row + "-" + col).classList.remove("seleccionado");
+                //     document.getElementById('cell-' + row + "-" + col).classList.add("barco");
+                // }
             }
+            // for (var i = 0; i < width; i++) {
+            //     var barcoTocado = false;
+            //     for (var j = 0; j < height; j++) {
+            //         if (grid[i].props.children[j].props.className === 'RejillaRectangulo seleccionado') {
+            //             barcoTocado = true;
+            //         } 
+            //     }
+            //     if (barcoTocado === false) {
+            //         for(var j = 0; j < height; j++){
+            //             if(grid[i].props.children[j].props.className === 'RejillaRectangulo seleccionado'){
+            //                 document.getElementById('cell-' + i + "-" + j).classList.remove("seleccionado");
+            //                 document.getElementById('cell-' + i + "-" + j).classList.add("barco");
+            //             }
+            //         }
+            //     }
+            // }
 
         }
     }
