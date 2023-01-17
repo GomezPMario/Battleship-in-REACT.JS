@@ -4,6 +4,7 @@ import './styles/Rejilla.css';
 let contador = 0;
 
 const Rejilla = (props) => {
+
     let height = props.height;
     let width = props.width;
 
@@ -19,6 +20,7 @@ const Rejilla = (props) => {
     if (document.getElementById('mostrarContador')) {
         document.getElementById('mostrarContador').innerHTML = contadortext;
     }
+
 
     let grid = [];
 
