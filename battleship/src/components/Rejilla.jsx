@@ -32,6 +32,8 @@ const Rejilla = (props) => {
         grid.push(<div key={row} className="FilasRejilla">{currentRow}</div>);
     }
 
+
+
     // Generamos aleatoriamente la orientación de cada barco
     const shipOrientation = Math.random() < 0.5 ? 'horizontal' : 'vertical';
 
@@ -197,6 +199,28 @@ const Rejilla = (props) => {
             //     }
             // }
 
+        }
+        checkShipState(e);
+    }
+
+
+    const checkShipState = (e) => {
+        var anyShipUntouched = false;
+
+        var childNodeElements = document.getElementsByClassName('Rejilla')[0].childNodes;
+        for (let i = 0; i < childNodeElements.length; i++) {
+            if (childNodeElements[i].className === "FilasRejilla") {
+                var cellsNodeElements = childNodeElements[i].childNodes;
+                for (let j = 0; j < cellsNodeElements.length; j++) {
+                    if (childNodeElements[i].childNodes[j].className === "RejillaRectangulo barco") {
+                        anyShipUntouched = true;
+                    }
+                }
+            }
+        }
+
+        if (!anyShipUntouched) {
+            alert("Has ganado la partida");
         }
     }
 

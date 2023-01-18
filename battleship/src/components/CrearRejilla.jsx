@@ -5,9 +5,11 @@ const CrearRejilla = () => {
     const [height, setHeight] = useState(5);
     const [width, setWidth] = useState(5);
     const [grid, setGrid] = useState(null);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setIsPlaying(true);
         setGrid(<Rejilla width={width} height={height} />);
     }
 
@@ -36,6 +38,7 @@ const CrearRejilla = () => {
                 <br />
                 <button type="submit">Crear cuadrícula</button>
             </form>
+            <br />
             <div id='gridContainer'>
                 {grid}
             </div>
@@ -44,3 +47,56 @@ const CrearRejilla = () => {
 }
 
 export default CrearRejilla;
+
+// import React, { useState } from 'react';
+// import Rejilla from './Rejilla';
+
+// const CrearRejilla = () => {
+//     const [height, setHeight] = useState(5);
+//     const [width, setWidth] = useState(5);
+//     const [grid, setGrid] = useState(null);
+//     const [isPlaying, setIsPlaying] = useState(false);
+
+//     const handleSubmit = (event) => {
+//         event.preventDefault();
+//         setWidth(event.target.widht.value);
+//         setHeight(event.target.height.value);
+//         setGrid(<Rejilla width={width} height={height} />);
+//     }
+
+//     const handleStart = () => {
+//         setIsPlaying(true);
+//     }
+
+//     return (
+//         <div>
+//             <form onSubmit={handleSubmit}>
+//                 <label htmlFor="widht">Anchura:</label>
+//                 <input
+//                     type="number"
+//                     id="widht"
+//                     name="widht"
+//                     min={5}
+//                     value={width}
+//                 />
+//                 <br />
+//                 <label htmlFor="height">Altura:</label>
+//                 <input
+//                     type="number"
+//                     id="height"
+//                     name="height"
+//                     min={5}
+//                     value={height}
+//                 />
+//                 <br />
+//                 <button type="submit">Crear cuadrícula</button>
+//             </form>
+//             {!isPlaying && <button onClick={handleStart}>Empezar</button>}
+//             <div id='gridContainer'>
+//                 {grid}
+//             </div>
+//         </div>
+//     );
+// }
+
+// export default CrearRejilla;
