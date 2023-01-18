@@ -21,7 +21,6 @@ const Rejilla = (props) => {
         document.getElementById('mostrarContador').innerHTML = contadortext;
     }
 
-
     let grid = [];
 
     for (let row = 0; row < height; row++) {
