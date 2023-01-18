@@ -2,6 +2,7 @@ import React from 'react';
 import './styles/Rejilla.css';
 
 let contador = 0;
+let canPlay = true;
 
 const Rejilla = (props) => {
 
@@ -31,8 +32,6 @@ const Rejilla = (props) => {
         }
         grid.push(<div key={row} className="FilasRejilla">{currentRow}</div>);
     }
-
-
 
     // Generamos aleatoriamente la orientación de cada barco
     const shipOrientation = Math.random() < 0.5 ? 'horizontal' : 'vertical';
@@ -156,49 +155,51 @@ const Rejilla = (props) => {
         let row = coordinates[1];
         let col = coordinates[2];
 
-        if (contador < 1) {
-            alert('No puede seleccionar mas casillas');
-        } else {
-            if (grid[row].props.children[col].props.className === 'RejillaRectangulo') {
-                document.getElementById('cell-' + row + "-" + col).classList.add("agua");
-                contador--;
-                document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
-            } else if (grid[row].props.children[col].props.className === 'RejillaRectangulo barco') {
-                document.getElementById('cell-' + row + "-" + col).classList.remove("barco");
-                document.getElementById('cell-' + row + "-" + col).classList.add("seleccionado");
-                contador--;
-                document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
-                // let shipId = grid[row].props.children[col].props.shipId;
-                // let newShipHits = {...shipHits};
-                // if(!newShipHits[shipId]) newShipHits[shipId] = 1;
-                // else newShipHits[shipId]++;
-                // setShipHits(newShipHits);
-                // document.getElementById('cell-' + row + "-" + col).classList.remove("barco");
-                // document.getElementById('cell-' + row + "-" + col).classList.add("seleccionado");
-                // contador--;
-                // document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
-                // if(newShipHits[shipId] === shipLengths[shipId]){
-                //     document.getElementById('cell-' + row + "-" + col).classList.remove("seleccionado");
-                //     document.getElementById('cell-' + row + "-" + col).classList.add("barco");
+        if(canPlay == true){
+            if (contador < 1) {
+                alert('No puede seleccionar mas casillas');
+            } else {
+                if (grid[row].props.children[col].props.className === 'RejillaRectangulo') {
+                    document.getElementById('cell-' + row + "-" + col).classList.add("agua");
+                    contador--;
+                    document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
+                } else if (grid[row].props.children[col].props.className === 'RejillaRectangulo barco') {
+                    document.getElementById('cell-' + row + "-" + col).classList.remove("barco");
+                    document.getElementById('cell-' + row + "-" + col).classList.add("seleccionado");
+                    contador--;
+                    document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
+                    // let shipId = grid[row].props.children[col].props.shipId;
+                    // let newShipHits = {...shipHits};
+                    // if(!newShipHits[shipId]) newShipHits[shipId] = 1;
+                    // else newShipHits[shipId]++;
+                    // setShipHits(newShipHits);
+                    // document.getElementById('cell-' + row + "-" + col).classList.remove("barco");
+                    // document.getElementById('cell-' + row + "-" + col).classList.add("seleccionado");
+                    // contador--;
+                    // document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
+                    // if(newShipHits[shipId] === shipLengths[shipId]){
+                    //     document.getElementById('cell-' + row + "-" + col).classList.remove("seleccionado");
+                    //     document.getElementById('cell-' + row + "-" + col).classList.add("barco");
+                    // }
+                }
+                // for (var i = 0; i < width; i++) {
+                //     var barcoTocado = false;
+                //     for (var j = 0; j < height; j++) {
+                //         if (grid[i].props.children[j].props.className === 'RejillaRectangulo seleccionado') {
+                //             barcoTocado = true;
+                //         } 
+                //     }
+                //     if (barcoTocado === false) {
+                //         for(var j = 0; j < height; j++){
+                //             if(grid[i].props.children[j].props.className === 'RejillaRectangulo seleccionado'){
+                //                 document.getElementById('cell-' + i + "-" + j).classList.remove("seleccionado");
+                //                 document.getElementById('cell-' + i + "-" + j).classList.add("barco");
+                //             }
+                //         }
+                //     }
                 // }
+    
             }
-            // for (var i = 0; i < width; i++) {
-            //     var barcoTocado = false;
-            //     for (var j = 0; j < height; j++) {
-            //         if (grid[i].props.children[j].props.className === 'RejillaRectangulo seleccionado') {
-            //             barcoTocado = true;
-            //         } 
-            //     }
-            //     if (barcoTocado === false) {
-            //         for(var j = 0; j < height; j++){
-            //             if(grid[i].props.children[j].props.className === 'RejillaRectangulo seleccionado'){
-            //                 document.getElementById('cell-' + i + "-" + j).classList.remove("seleccionado");
-            //                 document.getElementById('cell-' + i + "-" + j).classList.add("barco");
-            //             }
-            //         }
-            //     }
-            // }
-
         }
         checkShipState(e);
     }
@@ -219,8 +220,9 @@ const Rejilla = (props) => {
             }
         }
 
-        if (!anyShipUntouched) {
+        if (!anyShipUntouched && canPlay === true) {
             alert("Has ganado la partida");
+            canPlay = false;
         }
     }
 
@@ -228,7 +230,7 @@ const Rejilla = (props) => {
         <div className="Rejilla">
             {/* Le decimos al usuario el numero de clicks disponibles */}
             <span id='mostrarContador'>{contadortext}</span>
-            {grid}
+                {grid}
         </div>
     );
 }
