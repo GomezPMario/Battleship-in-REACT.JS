@@ -30,3 +30,10 @@
 .seleccionado{
     background-color: #4ce24c;
 }
+
+/* for (let i = 0; i < height; i++) {
+    for (let j = 0; j < width; j++) {
+        let cell = document.getElementById(`cell-${i}-${j}`);
+        cell.classList.remove("seleccionado");
+    }
+} */

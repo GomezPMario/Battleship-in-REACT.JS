@@ -36,7 +36,9 @@ const CrearRejilla = () => {
                 <br />
                 <button type="submit">Crear cuadrícula</button>
             </form>
-            {grid}
+            <div id='gridContainer'>
+                {grid}
+            </div>
         </div>
     );
 }

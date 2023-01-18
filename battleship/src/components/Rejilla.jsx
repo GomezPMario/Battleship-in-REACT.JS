@@ -154,6 +154,7 @@ const Rejilla = (props) => {
         let coordinates = id.split("-");
         let row = coordinates[1];
         let col = coordinates[2];
+
         if (contador < 1) {
             alert('No puede seleccionar mas casillas');
         } else {
@@ -199,8 +200,6 @@ const Rejilla = (props) => {
 
         }
     }
-
-
 
     return (
         <div className="Rejilla">
