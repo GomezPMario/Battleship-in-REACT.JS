@@ -155,7 +155,7 @@ const Rejilla = (props) => {
         let row = coordinates[1];
         let col = coordinates[2];
 
-        if(canPlay == true){
+        if(canPlay === true){
             if (contador < 1) {
                 alert('No puede seleccionar mas casillas');
             } else {
