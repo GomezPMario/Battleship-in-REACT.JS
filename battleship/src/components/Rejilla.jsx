@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './styles/Rejilla.css';
 
 let contador = 0;
-let canPlay = true;
+// let canPlay = true;
 
 const Rejilla = (props) => {
     const [canPlay, setCanPlay] = useState(false);
@@ -172,8 +172,8 @@ const Rejilla = (props) => {
                     document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
                 }
             }
+            checkShipState(e);
         }
-        checkShipState(e);
     }
 
 
@@ -194,7 +194,8 @@ const Rejilla = (props) => {
 
         if (!anyShipUntouched && canPlay === true) {
             alert("Has ganado la partida");
-            canPlay = false;
+            // canPlay = false;
+            setCanPlay(null);
         }
     }
 
@@ -202,9 +203,7 @@ const Rejilla = (props) => {
         <div className="Rejilla">
             {/* Le decimos al usuario el numero de clicks disponibles */}
             <span id='mostrarContador'>{contadortext}</span>
-            <button variant="success" onClick={() => setCanPlay(true)}>
-                Play
-            </button>
+            <button variant="success" onClick={() => setCanPlay(true)}>Play</button>
             {grid}
         </div>
     );
