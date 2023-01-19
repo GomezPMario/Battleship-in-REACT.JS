@@ -1,10 +1,12 @@
 import React from 'react';
+import { useState } from 'react';
 import './styles/Rejilla.css';
 
 let contador = 0;
 let canPlay = true;
 
 const Rejilla = (props) => {
+    const [canPlay, setCanPlay] = useState(false);
 
     let height = props.height;
     let width = props.width;
@@ -155,7 +157,7 @@ const Rejilla = (props) => {
         let row = coordinates[1];
         let col = coordinates[2];
 
-        if(canPlay === true){
+        if (canPlay === true) {
             if (contador < 1) {
                 alert('No puede seleccionar mas casillas');
             } else {
@@ -168,7 +170,7 @@ const Rejilla = (props) => {
                     document.getElementById('cell-' + row + "-" + col).classList.add("seleccionado");
                     contador--;
                     document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
-                }    
+                }
             }
         }
         checkShipState(e);
@@ -200,7 +202,10 @@ const Rejilla = (props) => {
         <div className="Rejilla">
             {/* Le decimos al usuario el numero de clicks disponibles */}
             <span id='mostrarContador'>{contadortext}</span>
-                {grid}
+            <button variant="success" onClick={() => setCanPlay(true)}>
+                Play
+            </button>
+            {grid}
         </div>
     );
 }
