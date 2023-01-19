@@ -200,19 +200,6 @@ const Rejilla = (props) => {
     }
 
     const showShips = () => {
-        const childNodeElements = document.getElementsByClassName('Rejilla')[0].childNodes;
-        // for (let i = 0; i < height - 1; i++) {
-        //     if (childNodeElements[i].className === "FilasRejilla") {
-        //         const cellsNodeElements = childNodeElements[i].childNodes;
-        //         for (let j = 0; j < width - 1; j++) {
-        //             if (childNodeElements[i].childNodes[j].className === "RejillaRectangulo barcoOculto") {
-        //                 console.log('cell-' + i + "-" + j);
-        //                 document.getElementById('cell-' + i + "-" + j).classList.remove("barcoOculto");
-        //                 document.getElementById('cell-' + i + "-" + j).classList.add("barco");
-        //             }
-        //         }
-        //     }
-        // }
         for (let i = 0; i < childNodeElements.length; i++) {
             if (childNodeElements[i].className === "FilasRejilla") {
                 const cellsNodeElements = childNodeElements[i].childNodes;
@@ -229,6 +216,20 @@ const Rejilla = (props) => {
         }
         alert("Has perdido la partida");
     }
+
+    // Funcion que cambia el color de un barco cuando ese barco ha sido completamente tocado
+    const changeShipColor = (e) => {
+        let id = e.target.id;
+        let coordinates = id.split("-");
+        let row = coordinates[1];
+        let col = coordinates[2];
+
+        if (grid[row].props.children[col].props.className === 'seleccionado') {
+            document.getElementById('cell-' + row + "-" + col).classList.remove("seleccionado");
+            document.getElementById('cell-' + row + "-" + col).classList.add("barco");
+        }
+    }
+
 
     return (
         <div className="Rejilla">
