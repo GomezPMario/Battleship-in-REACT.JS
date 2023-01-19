@@ -67,7 +67,7 @@ const Rejilla = (props) => {
                 for (let i = -1; i < length + 1; i++) {
                     for (let j = -1; j <= 1; j++) {
                         if (row + j >= 0 && row + j < height && col + i >= 0 && col + i < width) {
-                            if (grid[row + j].props.children[col + i].props.className === 'RejillaRectangulo barco') {
+                            if (grid[row + j].props.children[col + i].props.className === 'RejillaRectangulo barcoOculto') {
                                 flag = false;
                             }
                         }
@@ -83,7 +83,7 @@ const Rejilla = (props) => {
                 for (let i = -1; i < length + 1; i++) {
                     for (let j = -1; j <= 1; j++) {
                         if (row + i >= 0 && row + i < height && col + j >= 0 && col + j < width) {
-                            if (grid[row + i].props.children[col + j].props.className === 'RejillaRectangulo barco') {
+                            if (grid[row + i].props.children[col + j].props.className === 'RejillaRectangulo barcoOculto') {
                                 flag = false;
                             }
                         }
@@ -101,11 +101,11 @@ const Rejilla = (props) => {
     if (checkSpace(orientation, 5, row, col)) {
         if (orientation === 'horizontal') {
             for (let i = 0; i < 5; i++) {
-                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} id={`cell-${row}-${col + i}`} className="RejillaRectangulo barco" onClick={(e) => checkCell(e)}></div>;
+                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} id={`cell-${row}-${col + i}`} className="RejillaRectangulo barcoOculto" onClick={(e) => checkCell(e)}></div>;
             }
         } else {
             for (let i = 0; i < 5; i++) {
-                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} id={`cell-${row + i}-${col}`} className="RejillaRectangulo barco" onClick={(e) => checkCell(e)}></div>;
+                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} id={`cell-${row + i}-${col}`} className="RejillaRectangulo barcoOculto" onClick={(e) => checkCell(e)}></div>;
             }
         }
     }
@@ -116,11 +116,11 @@ const Rejilla = (props) => {
     if (checkSpace(orientation, 4, row, col)) {
         if (orientation === 'horizontal') {
             for (let i = 0; i < 4; i++) {
-                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} id={`cell-${row}-${col + i}`} className="RejillaRectangulo barco" onClick={(e) => checkCell(e)}></div>;
+                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} id={`cell-${row}-${col + i}`} className="RejillaRectangulo barcoOculto" onClick={(e) => checkCell(e)}></div>;
             }
         } else {
             for (let i = 0; i < 4; i++) {
-                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} id={`cell-${row + i}-${col}`} className="RejillaRectangulo barco" onClick={(e) => checkCell(e)}></div>;
+                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} id={`cell-${row + i}-${col}`} className="RejillaRectangulo barcoOculto" onClick={(e) => checkCell(e)}></div>;
             }
         }
     }
@@ -131,11 +131,11 @@ const Rejilla = (props) => {
     if (checkSpace(orientation, 3, row, col)) {
         if (orientation === 'horizontal') {
             for (let i = 0; i < 3; i++) {
-                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} id={`cell-${row}-${col + i}`} className="RejillaRectangulo barco" onClick={(e) => checkCell(e)}></div >;
+                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} id={`cell-${row}-${col + i}`} className="RejillaRectangulo barcoOculto" onClick={(e) => checkCell(e)}></div >;
             }
         } else {
             for (let i = 0; i < 3; i++) {
-                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} id={`cell-${row + i}-${col}`} className="RejillaRectangulo barco" onClick={(e) => checkCell(e)}></div >;
+                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} id={`cell-${row + i}-${col}`} className="RejillaRectangulo barcoOculto" onClick={(e) => checkCell(e)}></div >;
             }
         }
     }
@@ -146,11 +146,11 @@ const Rejilla = (props) => {
     if (checkSpace(orientation, 3, row, col)) {
         if (orientation === 'horizontal') {
             for (let i = 0; i < 3; i++) {
-                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} id={`cell-${row}-${col + i}`} className="RejillaRectangulo barco" onClick={(e) => checkCell(e)}></div >;
+                grid[row].props.children[col + i] = <div key={`${row}-${col + i}`} id={`cell-${row}-${col + i}`} className="RejillaRectangulo barcoOculto" onClick={(e) => checkCell(e)}></div >;
             }
         } else {
             for (let i = 0; i < 3; i++) {
-                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} id={`cell-${row + i}-${col}`} className="RejillaRectangulo barco" onClick={(e) => checkCell(e)}></div >;
+                grid[row + i].props.children[col] = <div key={`${row + i}-${col}`} id={`cell-${row + i}-${col}`} className="RejillaRectangulo barcoOculto" onClick={(e) => checkCell(e)}></div >;
             }
         }
     }
@@ -169,8 +169,8 @@ const Rejilla = (props) => {
                     document.getElementById('cell-' + row + "-" + col).classList.add("agua");
                     contador--;
                     document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
-                } else if (grid[row].props.children[col].props.className === 'RejillaRectangulo barco') {
-                    document.getElementById('cell-' + row + "-" + col).classList.remove("barco");
+                } else if (grid[row].props.children[col].props.className === 'RejillaRectangulo barcoOculto') {
+                    document.getElementById('cell-' + row + "-" + col).classList.remove("barcoOculto");
                     document.getElementById('cell-' + row + "-" + col).classList.add("seleccionado");
                     contador--;
                     document.getElementById('mostrarContador').innerHTML = `Le quedan ${contador} intentos`;
@@ -187,7 +187,7 @@ const Rejilla = (props) => {
             if (childNodeElements[i].className === "FilasRejilla") {
                 const cellsNodeElements = childNodeElements[i].childNodes;
                 for (let j = 0; j < cellsNodeElements.length; j++) {
-                    if (childNodeElements[i].childNodes[j].className === "RejillaRectangulo barco") {
+                    if (childNodeElements[i].childNodes[j].className === "RejillaRectangulo barcoOculto") {
                         anyShipUntouched = true;
                     }
                 }
