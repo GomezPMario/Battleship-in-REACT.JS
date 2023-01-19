@@ -199,12 +199,44 @@ const Rejilla = (props) => {
         }
     }
 
+    const showShips = () => {
+        const childNodeElements = document.getElementsByClassName('Rejilla')[0].childNodes;
+        // for (let i = 0; i < height - 1; i++) {
+        //     if (childNodeElements[i].className === "FilasRejilla") {
+        //         const cellsNodeElements = childNodeElements[i].childNodes;
+        //         for (let j = 0; j < width - 1; j++) {
+        //             if (childNodeElements[i].childNodes[j].className === "RejillaRectangulo barcoOculto") {
+        //                 console.log('cell-' + i + "-" + j);
+        //                 document.getElementById('cell-' + i + "-" + j).classList.remove("barcoOculto");
+        //                 document.getElementById('cell-' + i + "-" + j).classList.add("barco");
+        //             }
+        //         }
+        //     }
+        // }
+        for (let i = 0; i < childNodeElements.length; i++) {
+            if (childNodeElements[i].className === "FilasRejilla") {
+                const cellsNodeElements = childNodeElements[i].childNodes;
+                for (let j = 0; j < cellsNodeElements.length; j++) {
+                    if (childNodeElements[i].childNodes[j].className === "RejillaRectangulo barcoOculto") {
+                        if(childNodeElements[i].childNodes[j].classList){
+                            childNodeElements[i].childNodes[j].classList.remove("barcoOculto");
+                            childNodeElements[i].childNodes[j].classList.add("barco");
+                        }
+
+                    }
+                }
+            }
+        }
+        alert("Has perdido la partida");
+    }
+
     return (
         <div className="Rejilla">
             {/* Le decimos al usuario el numero de clicks disponibles */}
             <span id='mostrarContador'>{contadortext}</span>
             {/* <button variant="success" onClick={() => setCanPlay(true)}>Play</button> */}
             <button onClick={handlePlayButton}>Play</button>
+            <button onClick={() => showShips()}>Mostrar barcos</button>
             {grid}
         </div>
     );
