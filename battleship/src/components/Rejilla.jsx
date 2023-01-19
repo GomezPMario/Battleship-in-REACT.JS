@@ -8,6 +8,10 @@ let contador = 0;
 const Rejilla = (props) => {
     const [canPlay, setCanPlay] = useState(false);
 
+    const handlePlayButton = () => {
+        setCanPlay(true);
+    };
+
     let height = props.height;
     let width = props.width;
 
@@ -176,14 +180,12 @@ const Rejilla = (props) => {
         }
     }
 
-
     const checkShipState = (e) => {
-        var anyShipUntouched = false;
-
-        var childNodeElements = document.getElementsByClassName('Rejilla')[0].childNodes;
+        let anyShipUntouched = false;
+        const childNodeElements = document.getElementsByClassName('Rejilla')[0].childNodes;
         for (let i = 0; i < childNodeElements.length; i++) {
             if (childNodeElements[i].className === "FilasRejilla") {
-                var cellsNodeElements = childNodeElements[i].childNodes;
+                const cellsNodeElements = childNodeElements[i].childNodes;
                 for (let j = 0; j < cellsNodeElements.length; j++) {
                     if (childNodeElements[i].childNodes[j].className === "RejillaRectangulo barco") {
                         anyShipUntouched = true;
@@ -191,11 +193,9 @@ const Rejilla = (props) => {
                 }
             }
         }
-
         if (!anyShipUntouched && canPlay === true) {
             alert("Has ganado la partida");
-            // canPlay = false;
-            setCanPlay(null);
+            setCanPlay(false);
         }
     }
 
@@ -203,7 +203,8 @@ const Rejilla = (props) => {
         <div className="Rejilla">
             {/* Le decimos al usuario el numero de clicks disponibles */}
             <span id='mostrarContador'>{contadortext}</span>
-            <button variant="success" onClick={() => setCanPlay(true)}>Play</button>
+            {/* <button variant="success" onClick={() => setCanPlay(true)}>Play</button> */}
+            <button onClick={handlePlayButton}>Play</button>
             {grid}
         </div>
     );
