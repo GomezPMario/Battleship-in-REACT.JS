@@ -200,6 +200,8 @@ const Rejilla = (props) => {
     }
 
     const showShips = () => {
+        const childNodeElements = document.getElementsByClassName('Rejilla')[0].childNodes;
+
         for (let i = 0; i < childNodeElements.length; i++) {
             if (childNodeElements[i].className === "FilasRejilla") {
                 const cellsNodeElements = childNodeElements[i].childNodes;
@@ -215,6 +217,7 @@ const Rejilla = (props) => {
             }
         }
         alert("Has perdido la partida");
+        
     }
 
     // Funcion que cambia el color de un barco cuando ese barco ha sido completamente tocado
